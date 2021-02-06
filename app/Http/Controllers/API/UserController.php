@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
 {
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        return response()->json([], 200);
+        $data = $request->all();
+        $data = $data['users'];
+
+        $response_data = Helper::format_full_name($data);
+
+        return response()->json([
+            'users' => $response_data,
+            'message' => 'User added successfully'
+        ], 200);
     }
 }

@@ -12,7 +12,7 @@ Mimicking Restful API with one endpoint.
 
 ## Requirements
 
-* [ ] Request accepts use data body as JSON
+* [x] Request accepts use data body as JSON
  ```json
  {
     "users": [
@@ -28,7 +28,7 @@ Mimicking Restful API with one endpoint.
 }
  ```
 
- * [ ] Response is `first_name + last_name`
+ * [x] Response is `first_name + last_name`
  ```json
  {
     "users":[
