@@ -38,14 +38,20 @@ Mimicking Restful API with one endpoint.
 }
  ```
 
- * [ ] Authorization with Bearer API
- * [ ] API key hardcoded hashed string
- * [ ] Unauthorizided request gets 401
- * [ ] Tested
+ * [x] Authorization with Bearer API
+ * [x] API key hardcoded hashed string
+ * [x] Unauthorized request gets 403
+ * [x] Tested
 
 ---
 
 ## Installation
+
+### Authorization
+
+Api token is hardcoded. If you want to be send authorized request add Authorization header with `Bearer xNiEeqjQhA9kdw96DCKBIR9`
+
+If API token is invalid or missing, 403 Unauthorized will be thrown.
 
 ```bash
 
@@ -66,5 +72,6 @@ php artisan serve
 
 # run tests
 php artisan test
+
 ```
 

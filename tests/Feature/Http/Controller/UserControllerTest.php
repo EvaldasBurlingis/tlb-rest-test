@@ -8,6 +8,15 @@ use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+
+    /** @test */
+    public function verify_unauthorized_request_returns_403()
+    {
+        $response = $this->post('/api/users', []);
+
+        $response->assertStatus(403);
+    }
+
     /** @test */
     public function verify_post_data_validation()
     {
@@ -34,7 +43,9 @@ class UserControllerTest extends TestCase
             ]
         ];
 
-        $response = $this->json('POST', '/api/users', $request_data);
+        $response = $this
+                        ->withHeaders(['Authorization' => 'Bearer xNiEeqjQhA9kdw96DCKBIR9'])
+                        ->json('POST', '/api/users', $request_data);
 
         $response
             ->assertStatus(200)
@@ -57,7 +68,9 @@ class UserControllerTest extends TestCase
             ]
         ];
 
-        $response = $this->json('POST', '/api/users', $request_data);
+        $response = $this
+                        ->withHeaders(['Authorization' => 'Bearer xNiEeqjQhA9kdw96DCKBIR9'])
+                        ->json('POST', '/api/users', $request_data);
 
         $response
             ->assertStatus(422)

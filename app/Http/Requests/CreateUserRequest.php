@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateUserRequest extends FormRequest
@@ -11,9 +13,13 @@ class CreateUserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(Request $request)
     {
-        return true;
+        $hashedToken = Hash::make('xNiEeqjQhA9kdw96DCKBIR9');
+        $token = $request->bearerToken();
+
+        if( Hash::check($token, $hashedToken)) return true;
+        return false;
     }
 
     /**
